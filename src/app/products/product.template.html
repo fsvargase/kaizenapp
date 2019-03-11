@@ -54,8 +54,8 @@
     <div class="card-body" *ngIf="editProductForm">
         <h4 class="card-title">Editar Producto</h4>
         <form>
-          <p>ID: <input type="text" name="id" [(ngModel)]="newProduct.id" /></p>
-          <p>Name: <input type="text" name="name" [(ngModel)]="newProduct.name" /></p>
+          <p>ID: <input type="text" name="id" [(ngModel)]="editedProduct.id" /></p>
+          <p>Name: <input type="text" name="name" [(ngModel)]="editedProduct.name" /></p>
           <p>Description: <input type="text" name="description" [(ngModel)]="editedProduct.description" /></p>
           <p>Price: <input type="text" name="price" [(ngModel)]="editedProduct.price" /></p>
           <p>
