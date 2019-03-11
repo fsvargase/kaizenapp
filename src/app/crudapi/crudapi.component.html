@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="col-md-12">
+    <h1>Product List</h1>
+      <table class="table table-bordered table-striped table-hover">
+    <thead>
+      <tr>
+        <th class="text-center">ID</th>
+        <th class="text-center">Name</th>
+        <th class="text-center">Description</th>
+        <th class="text-center">Price</th>
+        <th class="text-center">&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let crudapi of Crudapi">
+        <td>{{ crudapi.id }}</td>
+        <td>{{ crudapi.name }}</td>
+        <td>{{ crudapi.description }}</td>
+        <td>{{ crudapi.price | currency:'USD':true:'1.0-2' }}</td>
+        <td>
+          <button class="btn btn-info"
+                        (click)="showEditCrudapiForm(crudapi)">
+                       <i class="fa fa-edit"></i>
+              </button>
+          <button class="btn btn-danger"
+                       (click)="removeCrudapi(crudapi)">
+                       <i class="fa fa-minus"></i>
+            </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="btn btn-success"
+               (click)="showAddCrudapiForm()"><i class="fa fa-plus"></i></button>
+  <br />
+  <br />
+
+  <form *ngIf="crudapiForm">
+    <h2>Add New Product</h2>
+    <p>ID: <input type="text"
+                           name="id"
+                           [(ngModel)]="newCrudapi.id" /></p>
+    <p>Name: <input type="text"
+                                 name="name"
+                                 [(ngModel)]="newCrudapi.name" /></p>
+    <p>Description: <input type="text"
+                                          name="description"
+                                          [(ngModel)]="newCrudapi.description" /></p>
+    <p>Price: <input type="text"
+                                name="price"
+                                [(ngModel)]="newCrudapi.price" /></p>
+    <p>
+      <button type="button"
+                   class="btn btn-primary"
+                   (click)="saveCrudapi(newCrudapi)">Submit</button>
+      <button type="button"
+                   class="btn btn-warning"
+                   (click)="cancelNewCrudapi()">Cancel</button>
+    </p>
+   </form>
+
+    <form *ngIf="editCrudapiForm">
+    <h2>Edit Product Details</h2>
+    <p>ID: <input type="text"
+                           name="id"
+                           [(ngModel)]="editedCrudapi.id" /></p>
+    <p>Name: <input type="text"
+                                 name="name"
+                                 [(ngModel)]="editedCrudapi.name" /></p>
+    <p>Description: <input type="text"
+                                          name="description"
+                                          [(ngModel)]="editedCrudapi.description" /></p>
+    <p>Price: <input type="text"
+                                name="price"
+                                [(ngModel)]="editedCrudapi.price" /></p>
+    <p>
+      <button type="button"
+                   class="btn btn-primary"
+                   (click)="updateCrudapi(editedCrudapi)">Submit</button>
+      <button type="button"
+                   class="btn btn-warning"
+                   (click)="cancelEdits()">Cancel</button>
+    </p>
+   </form>
+  </div>
+</div>
